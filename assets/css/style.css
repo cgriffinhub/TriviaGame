@@ -1,0 +1,35 @@
+.answer-option input[type='radio'] {
+    display:none;
+}
+.donationForm .radioDiv{margin:0px;}
+.answer-option label.radioLabel {
+		display:inline-block;
+        font-weight: 800;
+		padding: 10px 2px 10px 2px;
+		text-align: center;
+	    background:#e5e5e5;
+	    margin-bottom: 5px;
+		min-width: 300px;
+}
+.answer-option label.radioLabel:hover {
+		background-color:#eb3b3b;
+		color:#ffffff;
+}
+.answer-option {padding-left:2px;padding-right:2px;}
+.answer-option input[type='radio']:checked + label.radioLabel { 
+   background-color: #ba0c2f;  
+	color:#ffffff;
+}
+.center-buttons {
+	justify-content:center;
+}
+.answers {
+	min-width:250px;
+	margin:15px;
+}
+#record {
+	font-size:20px;
+}
+#question-section {
+	font-size:20px;
+}
