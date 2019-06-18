@@ -1,3 +1,4 @@
+// Initialize variables
 var questions;
 var n;
 var correct;
@@ -5,6 +6,7 @@ var incorrect;
 var timer;
 var current_question;
 
+// hide/show questions and messages before running startQuestion function
 $(".container").hide();
 $("#question-section").hide();		
 $( "#start" ).click(function() {
@@ -18,6 +20,7 @@ $( "#start" ).click(function() {
 
 function startQuestion() {
 
+    // list of questions
     questions = [
                 {question:"Which is the only Disney Princess that has a child?", answers:["Ariel", "Jasmine", "Belle","Cinderella"], answer:"Ariel"},
                 {question:"Chris Hemsworth plays this superhero.", answers:["Spider-Man", "Thor", "Aquaman","Wolverine"], answer:"Thor"},
@@ -28,12 +31,16 @@ function startQuestion() {
                 {question:"Who wrote the song \"Crazy\", made famous by Patsy Cline?", answers:["Hank Williams", "Merle Haggard", "Loretta Lynn","Willie Nelson"], answer:"Willie Nelson"},
                 {question:"What is the name of the villain in Texas Chainsaw Massacre", answers:["Michael Myers", "Jason", "Leatherface","Pinhead"], answer:"Leatherface"},
                 ];
+    
+    // set seconds to 10 and set starting score for correct/incorrect answers.
     n = 10;
     correct = 0;
     incorrect = 0;
 
-
+    // setTimeout to 1000 (1 second) so that 10 second variable changes each second, to reflect countdown.
     timer = setTimeout(countDown, 1000);
+    
+    // get random question and start countdown timer
     current_question = questions[Math.floor(Math.random()*questions.length)];
     $("#question-section").text(current_question.question);
     $("button[data-answer='a']").text(current_question.answers[0]);
@@ -41,10 +48,13 @@ function startQuestion() {
     $("button[data-answer='c']").text(current_question.answers[2]);
     $("button[data-answer='d']").text(current_question.answers[3]);
 
+    // show time remaining
     $("#game-over").text("Time Remaining:");
     $(".time-remaining").text(n);
     $("#start").hide();
 }
+
+// run next question
 function nextQuestion(n) {
 if (questions.length > 0) {
     timer = setTimeout(countDown, 1000);
@@ -66,6 +76,8 @@ else {
 
 }
 
+
+// cound down function for changing number of seconds remaining each second.
 function countDown(){
 n--;
 timer = setTimeout(countDown, 1000);
@@ -82,6 +94,8 @@ $(".time-remaining").text(n);
     }
 }
 
+
+// click function, calculate correct or incorrect based on answer clicked, then run next question
 $('.answers').on('click', function() {
     if($(this).text() === current_question.answer) {
         correct = correct+1;
